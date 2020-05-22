@@ -127,11 +127,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 String site="https://maps.googleapis.com/maps/api/place/nearbysearch/json";
                 site+="?location="+myLocation.getLatitude()+","
                         +myLocation.getLongitude()
-                        +"&radius=500&sensor=false&language=ko"
-                        +"&key=AIzaSyCVXAin1pBGTpLaWSApK7o3DFVOqRpWBiU";
-                if(type_keyword!=null && !type_keyword.equals("all")==false){
-                    site+="&types="+type_keyword;
-                }
+                        +"&radius=650&sensor=false&language=ko"
+                        +"&key=AIzaSyCVXAin1pBGTpLaWSApK7o3DFVOqRpWBiU"
+                        +"&types=cafe";
+//                if(type_keyword!=null && !type_keyword.equals("all")==false){
+//                    site+="&types="+type_keyword;
+//                }
                 // 접속할 페이지 주소
 //                String site="https://maps.googleapis.com/maps/api/place/nearbysearch/json"
 //                        +"&key=AIzaSyCVXAin1pBGTpLaWSApK7o3DFVOqRpWBiU"
