@@ -123,15 +123,24 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 name_list.clear();
                 vicinity_list.clear();
 
-                // 접속할 페이지 주소
-                String site="https://maps.googleapis.com/maps/api/place/nearbysearch/json"
-                        +"&key=AIzaSyCVXAin1pBGTpLaWSApK7o3DFVOqRpWBiU"
-                        + "&location="+myLocation.getLatitude()+","
+
+                String site="https://maps.googleapis.com/maps/api/place/nearbysearch/json";
+                site+="?location="+myLocation.getLatitude()+","
                         +myLocation.getLongitude()
-                        +"&radius=500&sensor=false&language=ko";
-                if(type_keyword!=null && !type_keyword.equals("all")){
+                        +"&radius=500&sensor=false&language=ko"
+                        +"&key=AIzaSyCVXAin1pBGTpLaWSApK7o3DFVOqRpWBiU";
+                if(type_keyword!=null && !type_keyword.equals("all")==false){
                     site+="&types="+type_keyword;
                 }
+                // 접속할 페이지 주소
+//                String site="https://maps.googleapis.com/maps/api/place/nearbysearch/json"
+//                        +"&key=AIzaSyCVXAin1pBGTpLaWSApK7o3DFVOqRpWBiU"
+//                        + "&location="+myLocation.getLatitude()+","
+//                        +myLocation.getLongitude()
+//                        +"&radius=500&sensor=false&language=ko";
+//                if(type_keyword!=null && !type_keyword.equals("all")){
+//                    site+="&types="+type_keyword;
+//                }
                 // 접속
                 URL url=new URL(site);
                 URLConnection conn=url.openConnection();
