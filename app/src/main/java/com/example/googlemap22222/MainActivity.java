@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 //데이터를 담아놓을 리스트를 초기화한다.
                 lat_list.clear();
                 lng_list.clear();
-                name_list.clear();
+                name_list.clear();  
                 vicinity_list.clear();
 
 
