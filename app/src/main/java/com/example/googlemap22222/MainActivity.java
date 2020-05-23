@@ -26,6 +26,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -52,11 +54,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     ArrayList<Marker> markers_list;
     // 다이얼로그를 구성하기 위한 배열
     String[] category_name_array={
-            "모두","ATM","은행","미용실","카페","교회","주유소","식당"
+            "ATM","은행","미용실","카페","교회","주유소","식당"
     };
     // types 값 배열
     String[] category_value_array={
-            "all","atm","bank","beauty_salon","cafe","church","gas_station","restaurant"
+           "atm","bank","beauty_salon","cafe","church","gas_station","restaurant"
     };
 
     //체크할 권한 배열
@@ -124,24 +126,28 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 vicinity_list.clear();
 
 
-                String site="https://maps.googleapis.com/maps/api/place/nearbysearch/json";
+               /* String site="https://maps.googleapis.com/maps/api/place/nearbysearch/json";
                 site+="?location="+myLocation.getLatitude()+","
                         +myLocation.getLongitude()
                         +"&radius=650&sensor=false&language=ko"
                         +"&key=AIzaSyCVXAin1pBGTpLaWSApK7o3DFVOqRpWBiU"
                         +"&types=cafe";
-//                if(type_keyword!=null && !type_keyword.equals("all")==false){
-//                    site+="&types="+type_keyword;
-//                }
+              if(type_keyword!=null && !type_keyword.equals("all")==false){
+                    site+="&types="+type_keyword;
+                }*/
+
+
                 // 접속할 페이지 주소
-//                String site="https://maps.googleapis.com/maps/api/place/nearbysearch/json"
-//                        +"&key=AIzaSyCVXAin1pBGTpLaWSApK7o3DFVOqRpWBiU"
-//                        + "&location="+myLocation.getLatitude()+","
-//                        +myLocation.getLongitude()
-//                        +"&radius=500&sensor=false&language=ko";
-//                if(type_keyword!=null && !type_keyword.equals("all")){
-//                    site+="&types="+type_keyword;
-//                }
+                String site="https://maps.googleapis.com/maps/api/place/nearbysearch/json";
+               site+="?location="+myLocation.getLatitude()+","
+                        +myLocation.getLongitude()
+                       +"&radius=650&sensor=false&language=ko"
+                       +"&key=AIzaSyCVXAin1pBGTpLaWSApK7o3DFVOqRpWBiU"
+                       +"&types="+type_keyword;
+
+                if(type_keyword!=null && !type_keyword.equals("all")){
+                  site+="&types="+type_keyword;
+                }
                 // 접속
                 URL url=new URL(site);
                 URLConnection conn=url.openConnection();
@@ -150,7 +156,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 InputStreamReader isr =new InputStreamReader(is, StandardCharsets.UTF_8);
                 BufferedReader br=new BufferedReader(isr);
                 String str=null;
-                StringBuffer buf=new StringBuffer();
+                StringBuilder buf=new StringBuilder();
+
                 // 읽어온다
                 do{
                     str=br.readLine();
